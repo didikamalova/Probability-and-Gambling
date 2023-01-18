@@ -77,7 +77,6 @@ print('keep ', wins_keep/n_games)
 wins_switch, history_switch = simulate_switch_choice(game)
 print('switch', wins_switch/n_games)
 
-
 plt.figure(figsize=(12,8))
 plt.plot(history_keep, 'g', label="Keep initial")
 plt.plot(history_switch, 'b', label="Only switch")
