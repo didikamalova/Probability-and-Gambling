@@ -1,9 +1,7 @@
 import random
-from random import randint
-from random import sample
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 
+# bet $1 initally and double the bet whenever the player loses and reset the bet to $1 when the player wins.
 def martingale(n_games):
     pockets = ["Red"] * 18 + ["Black"] * 18 + ["Green"] * 2
     profit = 0
@@ -22,7 +20,8 @@ def martingale(n_games):
     
     return profits_history
 
-def martingale_limited(n_games):
+# same strategy as in martingale(), but resetting the bet to $1 once a $512 bet is lost
+def martingale_b(n_games):
     pockets = ["Red"] * 18 + ["Black"] * 18 + ["Green"] * 2
     profit = 0
     bet = 1
@@ -35,7 +34,7 @@ def martingale_limited(n_games):
             bet = 1
         else:
             profit -= bet
-            if (bet*2 == 1024):
+            if (bet == 512):
                 bet = 1
             else:
                 bet *= 2
@@ -43,7 +42,8 @@ def martingale_limited(n_games):
     
     return profits_history
 
-def martingale_3(n_games):
+# same strategy as in martingale(), but keep betting $1000 once once a $512 bet is lost
+def martingale_c(n_games):
     pockets = ["Red"] * 18 + ["Black"] * 18 + ["Green"] * 2
     profit = 0
     bet = 1
@@ -70,11 +70,11 @@ def martingale_3(n_games):
     return profits_history
 
 
-martingale = martingale(1000000)
-plt.plot(martingale, linewidth=2)
-plt.xlabel("Number of Games", fontsize=10, fontweight="bold")
-plt.ylabel("Profits", fontsize=10, fontweight="bold")
-plt.xticks(fontsize=10, fontweight="bold")
-plt.yticks(fontsize=10, fontweight="bold")
-plt.title("Cumulative Profits", fontsize=10, fontweight="bold")
+martingale = martingale_b(1000)
+plt.plot(martingale, linewidth=1)
+plt.xlabel("Number of Games", fontsize=10)
+plt.ylabel("Profits", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.title("Cumulative Profits", fontsize=10)
 plt.show()
