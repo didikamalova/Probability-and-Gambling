@@ -53,15 +53,15 @@ def martingale_c(n_games):
         roll = random.choice(pockets)
         if roll == "Red":
             profit += bet
-            if (bet % 1000 == 0):
+            if (bet == 1000):
                 bet = 1000
             else:
                 bet = 1
         else:
             profit -= bet
-            if (bet*2 == 1024):
+            if (bet == 512):
                 bet = 1000
-            elif (bet % 1000 == 0):
+            elif (bet == 1000):
                 bet = 1000
             else:
                 bet *= 2
@@ -69,12 +69,11 @@ def martingale_c(n_games):
     
     return profits_history
 
-
-martingale = martingale_b(1000)
-plt.plot(martingale, linewidth=1)
+martingale_c = martingale_c(1000000)
+plt.plot(martingale_c, linewidth=1)
 plt.xlabel("Number of Games", fontsize=10)
 plt.ylabel("Profits", fontsize=10)
 plt.xticks(fontsize=10)
 plt.yticks(fontsize=10)
-plt.title("Cumulative Profits", fontsize=10)
+plt.title("Cumulative Profits: C", fontsize=10)
 plt.show()
