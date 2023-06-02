@@ -1,3 +1,1 @@
-# MATH77Q
-
-Some simulations made in class
+Some simulations made for MATH77Q: Probability and Gambling.
