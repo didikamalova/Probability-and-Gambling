@@ -1,3 +1,0 @@
-random.randint(a, b) - a random integer between a & b
-random.shuffle(x) - shuffle sequence x in place
-
